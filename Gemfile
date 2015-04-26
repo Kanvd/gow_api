@@ -17,6 +17,7 @@ group :test do
     gem "rspec-rails"   
     gem "factory_girl_rails"   
     gem 'ffaker' 
+    gem "shoulda-matchers"
 end 
 
 # Authentication and User model
