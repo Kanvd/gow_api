@@ -19,7 +19,8 @@ group :test do
     gem 'ffaker' 
 end 
 
-
+# Authentication and User model
+gem "devise"
 
 
 # To use ActiveModel has_secure_password
