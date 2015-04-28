@@ -18,6 +18,13 @@ group :test do
     gem "factory_girl_rails"   
     gem 'ffaker' 
     gem "shoulda-matchers"
+
+    #Saibsu gems
+    gem 'sabisu_rails', github: "IcaliaLabs/sabisu-rails"
+	gem 'compass-rails'
+	gem 'furatto'
+	gem 'font-awesome-rails'
+	gem 'simple_form' 
 end 
 
 # Authentication and User model
