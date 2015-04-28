@@ -16,10 +16,21 @@
 # users commonly want.
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
+  # Requires supporting ruby files with custom matchers and macros, etc,
+
+# This file is copied to spec/ when you run 'rails generate rspec:install'
+ ENV["RAILS_ENV"] ||= 'test'
+ require File.expand_path("../../config/environment", __FILE__)
+ require 'rspec/rails'
+ require 'rspec/autorun'
+ # in spec/support/ and its subdirectories.
+ Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
+
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
   # assertions if you prefer.
+  
   config.expect_with :rspec do |expectations|
     # This option will default to `true` in RSpec 4. It makes the `description`
     # and `failure_message` of custom matchers include text for helper methods
@@ -84,4 +95,12 @@ RSpec.configure do |config|
   # as the one that triggered the failure.
   Kernel.srand config.seed
 =end
+#Including to test requests
+ config.include Request::JsonHelpers, :type => :controller
+ config.include Request::HeadersHelpers, :type => :controller
+ config.include Devise::TestHelpers, :type => :controller
+
+  config.before(:each, type: :controller) do
+     include_default_accept_headers
+  end
 end
